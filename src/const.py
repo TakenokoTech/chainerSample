@@ -6,12 +6,12 @@ class CONST:
     RESULT_MODEL = 'build/result/trainer.model'
     RESULT_LOG = 'build/result/result.log'
 
-    BATCH_SIZE = 64
     GPU_ID = 0
+    BATCH_SIZE = 64
     INITIAL_LR = 0.01
     LR_DROP_EPOCH = [10]
     LR_DROP_RATIO = 0.1
-    TRAIN_EPOCH = 10
+    TRAIN_EPOCH = 25
     CHECK_COUNT = 100
 
     CAFFEMODEL_FN = './dataset/Illustration2Vec/illust2vec_ver200.caffemodel'

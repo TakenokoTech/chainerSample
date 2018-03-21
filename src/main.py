@@ -30,11 +30,7 @@ from common.log import log
 from model.Illust2Vec import Illust2Vec
 from const import CONST
 
-if __name__ == '__main__':
-
-    # ログファイルリセット
-    log.clear()
-    log.info("__name__ called.")
+def start():
 
     # buildフォルダ作成
     os.makedirs("log", exist_ok=True)
@@ -114,7 +110,7 @@ if __name__ == '__main__':
     # 結果
     config.train = False
     correctAnswerCount = 0
-    for _ in range(COUNT.CHECK_COUNT):
+    for _ in range(CONST.CHECK_COUNT):
         x, t = valid[np.random.randint(len(valid))]
         x = cuda.to_gpu(x)
         y = F.softmax(model.predictor(x[None, ...]))
@@ -130,4 +126,13 @@ if __name__ == '__main__':
         if (pred == label): correctAnswerCount += 1
     
     # 結果
-    log.info('RESULT {0} / {1} ({2:.2%})'.format(correctAnswerCount, COUNT.CHECK_COUNT, (correctAnswerCount/COUNT.CHECK_COUNT)))
+    log.info('RESULT {0} / {1} ({2:.2%})'.format(correctAnswerCount, CONST.CHECK_COUNT, (correctAnswerCount/CONST.CHECK_COUNT)))
+
+'''メイン
+'''
+if __name__ == '__main__':
+    
+    # ログファイルリセット
+    log.clear()
+    log.info("__name__ called.")
+    start()
